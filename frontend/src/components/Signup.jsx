@@ -29,7 +29,7 @@ export default function Signup() {
   };
 
   return (
-    <AuthForm title="Create your Zappycart account">
+    <AuthForm title="Create your account">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input type="text" placeholder="Name" className="p-3 border rounded" value={name} onChange={(e) => setName(e.target.value)} />
         <input type="email" placeholder="Email" className="p-3 border rounded" value={email} onChange={(e) => setEmail(e.target.value)} />
