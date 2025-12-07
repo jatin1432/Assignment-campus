@@ -32,8 +32,6 @@ app.use(passport.initialize());
 
 // ---------- Routes ----------
 app.use("/api/auth", require("./routes/authRoutes"));
-app.use("/api/otp", require("./routes/otpRoutes"));
-
 // app.use("/api/user", require("./routes/userRoutes")); // Optional
 
 // ---------- Root ----------
