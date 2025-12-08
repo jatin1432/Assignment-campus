@@ -5,11 +5,11 @@ const userSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
 
-    email: { 
-      type: String, 
-      required: true, 
-      unique: true, 
-      lowercase: true 
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
     },
 
     password: {
@@ -26,16 +26,17 @@ const userSchema = new mongoose.Schema(
 
     isVerified: { type: Boolean, default: false },
 
-    provider: { 
-      type: String, 
-      enum: ["email", "google", "otp"], 
-      default: "email" 
+    provider: {
+      type: String,
+      enum: ["email", "google", "otp"],
+      default: "email",
     },
 
     avatar: { type: String },
   },
   { timestamps: true }
 );
+
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
