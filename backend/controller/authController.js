@@ -1,5 +1,5 @@
 const User = require("../model/User");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const registerUser = async (req, res) => {
@@ -30,9 +30,8 @@ const loginUser = async (req, res) => {
     const user = await User.findOne({ email }).select("+password");
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch)
-      return res.status(400).json({ message: "Invalid password" });
+    const isMatch = await bcrypt.compare(password, user.password); // works reliably in production
+    if (!isMatch) return res.status(400).json({ message: "Invalid password" });
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
