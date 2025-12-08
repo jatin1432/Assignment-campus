@@ -1,6 +1,5 @@
 const express = require("express");
 const passport = require("passport");
-const jwt = require("jsonwebtoken");
 const { registerUser, loginUser } = require("../controller/authController");
 const { googleCallback } = require("../controller/googleController");
 
@@ -11,12 +10,10 @@ const router = express.Router();
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 
-
 router.get(
   "/google",
   passport.authenticate("google", { scope: ["profile", "email"], session: false })
 );
-
 
 router.get(
   "/google/callback",
